@@ -1,0 +1,11 @@
+groups:
+- name: recommendation-alerts
+  rules:
+  - alert: RecommendationFailuresHigh
+    expr: increase(sum(recommendation_failed_request[1m])) > 5
+    for: 30s
+    labels:
+      severity: warning
+    annotations:
+      summary: "Recommendation failures too high"
+      description: "More than 5 failures in last 1m."

@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  recommendation_service:
+    ports:
+      - "0.0.0.0:8082:8082"
+    env_file:
+      - .env.prod
+    command: [ "gunicorn", "-w", "1", "-b", "0.0.0.0:8082", "app:create_app()" ]

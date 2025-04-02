@@ -1,0 +1,18 @@
+FROM python:3.9-slim
+
+RUN apt-get update && apt-get install -y gcc build-essential
+
+WORKDIR /app
+COPY . /app
+
+# Define a build argument with a default value
+ARG VERSION=latest
+
+# Set an environment variable in the image using the build argument
+ENV MODEL_VERSION=${VERSION}
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+EXPOSE 8081
+
+CMD ["gunicorn", "-w", "1", "-b", "0.0.0.0:8081", "app:create_app()"]

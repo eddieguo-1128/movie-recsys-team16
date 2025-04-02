@@ -1,0 +1,1 @@
+sudo -u postgres psql -f ./sql/online_eval.sql

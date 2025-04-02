@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  recommendation_service:
+    ports:
+      - "127.0.0.1:8081:8081"
+    env_file:
+      - .env
+    command: [ "python", "run.py" ]

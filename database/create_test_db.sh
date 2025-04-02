@@ -1,0 +1,1 @@
+sudo -u postgres psql -f ./sql/create_test_db.sql
